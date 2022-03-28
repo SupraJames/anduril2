@@ -23,15 +23,15 @@
 
 // Temp in front of my computer where I'm usually flashing my flashlights...
 #undef THERM_AUTOCALIBRATE_TEMP
-#define THERM_AUTOCALIBRATE_TEMP 26
+#define THERM_AUTOCALIBRATE_TEMP 21
 
 // Default autolock on
 #undef DEFAULT_AUTOLOCK_TIME
-#define DEFAULT_AUTOLOCK_TIME 20
+#define DEFAULT_AUTOLOCK_TIME 2
 
 // Disable nasty strobes
-#undef USE_PARTY_STROBE_MODE
-#undef USE_TACTICAL_STROBE_MODE
+// #undef USE_PARTY_STROBE_MODE
+// #undef USE_TACTICAL_STROBE_MODE
 #undef STROBE_BRIGHTNESS
 #undef DEFAULT_BIKING_LEVEL
 #define STROBE_BRIGHTNESS RAMP_DISCRETE_CEIL / 3
@@ -39,7 +39,7 @@
 
 // Default ramp style: 0 = smooth, 1 = stepped
 #undef RAMP_STYLE
-#define RAMP_STYLE 1
+#define RAMP_STYLE 0
 
 // Dimmest possible moonlight, and 5 ramp steps
 #undef RAMP_DISCRETE_FLOOR
@@ -50,18 +50,29 @@
 #define RAMP_DISCRETE_STEPS 5
 
 // Use manual memory by default
-#undef DEFAULT_MANUAL_MEMORY
-#define DEFAULT_MANUAL_MEMORY (RAMP_DISCRETE_FLOOR + RAMP_DISCRETE_CEIL) / 2
+// #undef DEFAULT_MANUAL_MEMORY
+// #define DEFAULT_MANUAL_MEMORY (RAMP_DISCRETE_FLOOR + RAMP_DISCRETE_CEIL) / 2
 
 // Don't ramp after moonlight by default
 #undef DEFAULT_DONT_RAMP_AFTER_MOON
-#define DEFAULT_DONT_RAMP_AFTER_MOON 1
+#define DEFAULT_DONT_RAMP_AFTER_MOON 0
+
+// Go straight to lockout mode after sunset timer expiry
+#undef LOCKOUT_AFTER_SUNSET
+#define LOCKOUT_AFTER_SUNSET 1
+
+// Don't blink after unlocking with 3 clicks
+#undef DISABLE_UNLOCK_BLINK
+#define DISABLE_UNLOCK_BLINK 1
 
 // AUX LEDs
 #undef RGB_LED_OFF_DEFAULT
 #undef RGB_LED_LOCKOUT_DEFAULT
-#define RGB_LED_OFF_DEFAULT 0x19  // low, voltage
-#define RGB_LED_LOCKOUT_DEFAULT 0x19  // low, voltage
+#define RGB_LED_OFF_DEFAULT 0x12  // low, voltage
+#define RGB_LED_LOCKOUT_DEFAULT 0x22  // low, voltage
+
+#define BLINK_USING_RGB 1
+#define RGB_BLINK_COLOR 0b00001100
 
 #ifdef USE_TINT_RAMPING
 #undef PWM1_LEVELS

@@ -51,7 +51,11 @@ uint8_t candle_mode_state(Event event, uint16_t arg) {
     sunset_timer_state(event, arg);
     // if the timer just expired, shut off
     if (sunset_active  &&  (! sunset_timer)) {
+		#ifdef LOCKOUT_AFTER_SUNSET
+		set_state(lockout_state, 0);
+		#else
         set_state(off_state, 0);
+		#endif
         return MISCHIEF_MANAGED;
     }
     #endif  // ifdef USE_SUNSET_TIMER

@@ -90,7 +90,9 @@ uint8_t lockout_state(Event event, uint16_t arg) {
 
     // 3 clicks: exit and turn off
     else if (event == EV_3clicks) {
+		#ifndef DISABLE_UNLOCK_BLINK
         blink_once();
+		#endif
         set_state(off_state, 0);
         return MISCHIEF_MANAGED;
     }
